@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ────────────────────────────────────────────────── */
+:root {
+  --color-primary: #6366F1;
+  --color-secondary: #8B5CF6;
+  --color-accent: #EC4899;
+  --transition-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Base Reset ───────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-light-bg text-slate-800 font-sans transition-colors duration-300;
+    min-height: 100vh;
+  }
+
+  body.dark {
+    @apply bg-dark-bg text-slate-100;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-dark-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-400 dark:bg-dark-muted;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgba(99, 102, 241, 0.2);
+    color: #6366F1;
+  }
+}
+
+/* ─── Component Utilities ──────────────────────────────────────────────────── */
+@layer components {
+  /* Glass morphism card */
+  .glass {
+    @apply backdrop-blur-xl bg-white/80 dark:bg-dark-surface/80 border border-white/20 dark:border-dark-border/50;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-xl bg-dark-surface/70 border border-dark-border/50;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* Premium card */
+  .card {
+    @apply bg-white dark:bg-dark-surface rounded-2xl border border-light-border dark:border-dark-border;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.04);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .dark .card {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  .dark .card:hover {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+  }
+
+  /* Gradient border */
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(var(--bg, white), var(--bg, white)) padding-box,
+                linear-gradient(135deg, #6366F1, #8B5CF6, #EC4899) border-box;
+    border: 2px solid transparent;
+    border-radius: 1rem;
+  }
+
+  .dark .gradient-border {
+    --bg: #1E293B;
+  }
+
+  /* Input base styles */
+  .input-base {
+    @apply w-full px-4 py-3 rounded-xl border border-light-border dark:border-dark-border 
+           bg-light-elevated dark:bg-dark-elevated text-slate-800 dark:text-slate-100
+           placeholder-slate-400 dark:placeholder-slate-500
+           focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary
+           transition-all duration-200;
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-xl
+           transition-all duration-200 cursor-pointer select-none
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn px-5 py-2.5 text-white;
+    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+  }
+
+  .btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  .btn-ghost {
+    @apply btn px-4 py-2 text-slate-600 dark:text-slate-300 
+           hover:bg-slate-100 dark:hover:bg-dark-elevated hover:text-slate-900 dark:hover:text-white;
+  }
+
+  .btn-outline {
+    @apply btn px-4 py-2 border border-primary/40 text-primary hover:bg-primary/10;
+  }
+
+  /* Shimmer loading */
+  .shimmer {
+    background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.5) 50%, transparent 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  .dark .shimmer {
+    background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.05) 50%, transparent 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Avatar gradient */
+  .avatar-gradient-0 { background: linear-gradient(135deg, #6366F1, #8B5CF6); }
+  .avatar-gradient-1 { background: linear-gradient(135deg, #EC4899, #F43F5E); }
+  .avatar-gradient-2 { background: linear-gradient(135deg, #06B6D4, #3B82F6); }
+  .avatar-gradient-3 { background: linear-gradient(135deg, #10B981, #06B6D4); }
+  .avatar-gradient-4 { background: linear-gradient(135deg, #F59E0B, #EF4444); }
+  .avatar-gradient-5 { background: linear-gradient(135deg, #8B5CF6, #EC4899); }
+
+  /* Nav link active state */
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 dark:text-slate-300
+           hover:bg-light-elevated dark:hover:bg-dark-elevated hover:text-slate-900 dark:hover:text-white
+           transition-all duration-200 font-medium text-sm;
+  }
+
+  .nav-link.active {
+    @apply bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-400 font-semibold;
+  }
+
+  /* Like button animation */
+  .like-btn {
+    @apply transition-all duration-150;
+  }
+
+  .like-btn:active {
+    transform: scale(1.4);
+  }
+
+  /* Toast overrides */
+  .Toastify__toast {
+    @apply rounded-xl font-sans text-sm font-medium !important;
+  }
+}
+
+/* ─── Utility Overrides ────────────────────────────────────────────────────── */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
