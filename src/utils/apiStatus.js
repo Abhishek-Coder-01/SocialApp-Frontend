@@ -1,13 +1,10 @@
-const isRenderHost = () => {
-  const apiUrl = process.env.REACT_APP_API_URL || '';
-  return /render\.com|onrender\.com/i.test(apiUrl);
-};
+import { isRenderApiHost } from './apiConfig';
 
 let state = {
   activeRequests: 0,
   showNotice: false,
   message: '',
-  isRenderHost: isRenderHost(),
+  isRenderHost: isRenderApiHost(),
 };
 
 const listeners = new Set();
@@ -36,7 +33,7 @@ export const beginApiRequest = () => {
   state = {
     ...state,
     activeRequests: state.activeRequests + 1,
-    isRenderHost: isRenderHost(),
+    isRenderHost: isRenderApiHost(),
   };
 
   if (state.isRenderHost && state.activeRequests === 1) {

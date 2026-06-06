@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { beginApiRequest, endApiRequest, showApiNotice } from './apiStatus';
-
-// Base API URL from environment variable, fallback to localhost
-const API_URL = process.env.REACT_APP_API_URL || 'https://socialapp-backend-i2sv.onrender.com//api';
+import { API_URL, isRenderApiHost } from './apiConfig';
 
 // Create axios instance with base config
 const api = axios.create({
@@ -32,7 +30,7 @@ api.interceptors.response.use(
   (error) => {
     endApiRequest();
 
-    if (!error.response && /render\.com|onrender\.com/i.test(API_URL)) {
+    if (!error.response && isRenderApiHost()) {
       showApiNotice('Render server is waking up. Please wait a moment.');
     }
 
