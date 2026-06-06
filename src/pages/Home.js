@@ -474,7 +474,7 @@ export default function Home() {
         <div style={{ maxWidth: 1160, margin: '0 auto' }}>
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ marginBottom: 56 }}>
             <p style={{ fontFamily: 'JetBrains Mono', fontSize: 11, fontWeight: 500, color: '#6366F1', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>
-              // capabilities
+              {'// capabilities'}
             </p>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 16 }}>
               <h2 style={{ fontFamily: 'Playfair Display', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 900, color: '#1A1510', lineHeight: 1.1, letterSpacing: '-0.02em', maxWidth: 460 }}>
@@ -497,7 +497,7 @@ export default function Home() {
           {/* Left */}
           <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <p style={{ fontFamily: 'JetBrains Mono', fontSize: 11, fontWeight: 500, color: '#6366F1', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>
-              // process
+              {'// process'}
             </p>
             <h2 style={{ fontFamily: 'Playfair Display', fontSize: 'clamp(2rem,3vw,2.8rem)', fontWeight: 900, color: '#1A1510', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: 20 }}>
               Launch in<br /><em style={{ color: '#6366F1' }}>four steps</em>
@@ -568,7 +568,7 @@ export default function Home() {
       <section id="about" style={{ padding: '80px 2rem', position: 'relative', zIndex: 1 }}>
         <div style={{ maxWidth: 1160, margin: '0 auto' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ textAlign: 'center', marginBottom: 52 }}>
-            <p style={{ fontFamily: 'JetBrains Mono', fontSize: 11, fontWeight: 500, color: '#6366F1', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>// testimonials</p>
+            <p style={{ fontFamily: 'JetBrains Mono', fontSize: 11, fontWeight: 500, color: '#6366F1', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>{'// testimonials'}</p>
             <h2 style={{ fontFamily: 'Playfair Display', fontSize: 'clamp(1.8rem,3vw,2.6rem)', fontWeight: 900, color: '#1A1510', letterSpacing: '-0.02em' }}>
               Loved by <em style={{ color: '#6366F1' }}>real creators</em>
             </h2>
@@ -802,15 +802,16 @@ export default function Home() {
               {/* Social Icons */}
               <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
                 {['Twitter', 'GitHub', 'Discord', 'YouTube'].map((platform, idx) => (
-                  <a
+                  <button
+                    type="button"
                     key={platform}
-                    href="#"
                     style={{
                       width: '36px',
                       height: '36px',
                       borderRadius: '10px',
                       background: 'rgba(255,255,255,0.03)',
                       border: '1px solid rgba(255,255,255,0.06)',
+                      padding: 0,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -836,7 +837,7 @@ export default function Home() {
                     }}
                   >
                     {platform[0]}
-                  </a>
+                  </button>
                 ))}
               </div>
             </div>
@@ -898,13 +899,16 @@ export default function Home() {
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {column.links.map((link) => (
-                    <a
+                    <button
+                      type="button"
                       key={link.label}
-                      href="#"
                       style={{
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         fontSize: '14px',
                         color: 'rgba(247,244,238,0.4)',
+                        background: 'transparent',
+                        border: 'none',
+                        padding: 0,
                         textDecoration: 'none',
                         transition: 'all 0.2s ease',
                         display: 'flex',
@@ -952,7 +956,7 @@ export default function Home() {
                           animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
                         }} />
                       )}
-                    </a>
+                    </button>
                   ))}
                 </div>
               </div>

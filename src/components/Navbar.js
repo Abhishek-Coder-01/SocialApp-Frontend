@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Bell, Home, Zap, Compass, MessageCircle, HelpCircle,
+  Home, Zap, HelpCircle,
   LogOut, LogIn, UserPlus, Menu, X, Sparkles,
-  Settings, TrendingUp, ChevronDown, Star, Users, Layout
+  ChevronDown, Star, Users
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -25,6 +25,7 @@ export default function Navbar() {
   const [profileOpen, setProfileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const profileRef = useRef(null);
+  const isLandingPage = !isAuthenticated;
 
   // Scroll handling
   useEffect(() => {
@@ -54,7 +55,7 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [pathname, isAuthenticated]);
+  }, [pathname, isAuthenticated, isLandingPage]);
 
   // Close menus on route change
   useEffect(() => {
@@ -107,7 +108,6 @@ export default function Navbar() {
   ];
 
 
-  const isLandingPage = !isAuthenticated;
   const displayLinks = isLandingPage ? centerLinks : authLinks;
 
   // FIXED: Proper active state detection

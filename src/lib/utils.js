@@ -37,3 +37,31 @@ export function formatCount(n) {
   if (n >= 1_000) return (n / 1_000).toFixed(1) + 'K';
   return String(n);
 }
+
+/** Format relative time like "3m ago" */
+export function formatRelativeTime(dateInput) {
+  if (!dateInput) return '';
+
+  const date = new Date(dateInput);
+  if (Number.isNaN(date.getTime())) return '';
+
+  const seconds = Math.floor((Date.now() - date.getTime()) / 1000);
+  if (seconds < 60) return 'just now';
+
+  const intervals = [
+    { limit: 60, label: 'm', value: 60 },
+    { limit: 60 * 60, label: 'h', value: 60 * 60 },
+    { limit: 60 * 60 * 24, label: 'd', value: 60 * 60 * 24 },
+    { limit: 60 * 60 * 24 * 30, label: 'mo', value: 60 * 60 * 24 * 30 },
+    { limit: Infinity, label: 'y', value: 60 * 60 * 24 * 365 },
+  ];
+
+  for (const interval of intervals) {
+    if (seconds < interval.limit) {
+      const amount = Math.floor(seconds / interval.value);
+      return `${amount}${interval.label} ago`;
+    }
+  }
+
+  return 'just now';
+}

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  RefreshCw, AlertTriangle, Sparkles, Filter, 
+  RefreshCw, AlertTriangle, Sparkles, 
   ChevronDown, Clock, Zap, TrendingUp, SlidersHorizontal,
-  ArrowUp, CheckCircle2, Inbox, PartyPopper
+  ArrowUp, CheckCircle2
 } from 'lucide-react';
 import CreatePost from '../components/CreatePost';
 import PostCard from '../components/PostCard';

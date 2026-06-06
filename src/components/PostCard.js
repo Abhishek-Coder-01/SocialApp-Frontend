@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Heart, MessageCircle, Share2, Bookmark, MoreHorizontal,
   Trash2, X, Send, ChevronDown,
-  Eye, TrendingUp, Clock, Globe, Lock, Copy, Check, BadgeCheck
+  Eye, Clock, Check, BadgeCheck
 } from 'lucide-react';
-import { format } from 'timeago.js';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import api from '../utils/api';
 import Avatar from './ui/Avatar';
-import { cn, formatCount } from '../lib/utils';
+import { cn, formatCount, formatRelativeTime } from '../lib/utils';
 
 function CommentItem({ comment }) {
   const [liked, setLiked] = useState(false);
@@ -34,7 +33,7 @@ function CommentItem({ comment }) {
         <div className="flex items-center gap-3 mt-1 ml-1.5">
           {comment.createdAt && (
             <span className="text-[10px] text-slate-400 dark:text-slate-500 font-medium">
-              {format(comment.createdAt)}
+              {formatRelativeTime(comment.createdAt)}
             </span>
           )}
           <button
@@ -204,7 +203,7 @@ export default function PostCard({ post, onDelete, onUpdate }) {
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <Clock size={11} className="text-slate-600 dark:text-slate-400" />
                   <span className="text-[11px] text-slate-700 dark:text-slate-300 font-medium">
-                    {format(post.createdAt)}
+                    {formatRelativeTime(post.createdAt)}
                   </span>
                 </div>
               </div>

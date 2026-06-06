@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Lock, User, Sparkles, ArrowRight, Star, Zap, Heart, Eye, EyeOff, Check, CheckCircle, ArrowLeft, Home } from 'lucide-react';
+import { Mail, Lock, User, Sparkles, ArrowRight, Eye, EyeOff, Check, CheckCircle, ArrowLeft, Home } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
@@ -236,7 +236,7 @@ export default function Signup() {
         <div style={{ position: 'relative', zIndex: 10 }} className="pt-19 lg:pt-32">
           <motion.div initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}>
             <p style={{ fontFamily: 'JetBrains Mono', fontSize: 11, color: 'rgba(165,180,252,0.7)', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 18 }}>
-              // join us
+              {'// join us'}
             </p>
             <h2 style={{ fontFamily: 'Playfair Display', fontSize: '3rem', fontWeight: 900, color: '#F7F4EE', lineHeight: 1.08, letterSpacing: '-0.02em', marginBottom: 20 }}>
               Start your<br />
@@ -322,7 +322,7 @@ export default function Signup() {
           {/* Header */}
           <div style={{ marginBottom: 36 }}>
             <p style={{ fontFamily: 'JetBrains Mono', fontSize: 11, color: '#6366F1', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 12 }}>
-              // get started
+              {'// get started'}
             </p>
             <h1 className="heading" style={{ fontFamily: 'Playfair Display', fontSize: '2.2rem', fontWeight: 900, color: '#1A1510', letterSpacing: '-0.025em', lineHeight: 1.1, marginBottom: 10 }}>
               Create account

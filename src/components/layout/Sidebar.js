@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
-  Rss, Compass, Bookmark,
-  Settings, LogOut, Sparkles
+  Rss, LogOut, Sparkles
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
