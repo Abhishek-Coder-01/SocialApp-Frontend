@@ -2,7 +2,7 @@ import axios from 'axios';
 import { beginApiRequest, endApiRequest, showApiNotice } from './apiStatus';
 
 // Base API URL from environment variable, fallback to localhost
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'https://socialapp-backend-i2sv.onrender.com//api';
 
 // Create axios instance with base config
 const api = axios.create({
