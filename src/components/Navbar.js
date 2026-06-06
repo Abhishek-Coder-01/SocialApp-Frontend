@@ -7,7 +7,6 @@ import {
   ChevronDown, Star, Users
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { useTheme } from '../context/ThemeContext';
 import { toast } from 'react-toastify';
 import { getInitials } from '../lib/utils';
 
@@ -17,7 +16,6 @@ const FONTS = `
 
 export default function Navbar() {
   const { user, isAuthenticated, logout } = useAuth();
-  const { isDark } = useTheme();
   const navigate = useNavigate();
   const { pathname, hash } = useLocation();
   const [scrolled, setScrolled] = useState(false);
@@ -26,6 +24,7 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('');
   const profileRef = useRef(null);
   const isLandingPage = !isAuthenticated;
+  const isDark = false;
 
   // Scroll handling
   useEffect(() => {

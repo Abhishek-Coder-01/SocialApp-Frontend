@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { ThemeProvider, useTheme } from './context/ThemeContext';
 import AppLayout from './components/layout/AppLayout';
 import Feed from './pages/Feed';
 import Login from './pages/Login';
@@ -26,7 +25,6 @@ const PublicRoute = ({ children }) => {
 };
 
 function ToastWrapper() {
-  const { isDark } = useTheme();
   return (
     <ToastContainer
       position="top-right"
@@ -35,7 +33,7 @@ function ToastWrapper() {
       newestOnTop
       closeOnClick
       pauseOnHover
-      theme={isDark ? 'dark' : 'light'}
+      theme="light"
       toastStyle={{ borderRadius: '12px', fontFamily: 'Inter, sans-serif' }}
     />
   );
@@ -82,13 +80,11 @@ function AppRoutes() {
 
 function App() {
   return (
-    <ThemeProvider>
-      <AuthProvider>
-        <Router>
-          <AppRoutes />
-        </Router>
-      </AuthProvider>
-    </ThemeProvider>
+    <AuthProvider>
+      <Router>
+        <AppRoutes />
+      </Router>
+    </AuthProvider>
   );
 }
 
