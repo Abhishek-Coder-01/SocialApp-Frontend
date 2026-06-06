@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { beginApiRequest, endApiRequest, showApiNotice } from './apiStatus';
+import { beginApiRequest, endApiRequest, hideApiNotice, showApiNotice } from './apiStatus';
 import { API_URL, isRenderApiHost } from './apiConfig';
 
 // Create axios instance with base config
@@ -24,7 +24,10 @@ api.interceptors.request.use(
 // Response interceptor: handle auth errors globally
 api.interceptors.response.use(
   (response) => {
-    endApiRequest();
+    const activeRequests = endApiRequest();
+    if (isRenderApiHost() && activeRequests === 0) {
+      hideApiNotice();
+    }
     return response;
   },
   (error) => {

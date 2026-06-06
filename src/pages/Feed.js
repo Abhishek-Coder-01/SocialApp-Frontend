@@ -157,36 +157,116 @@ export default function Feed() {
             }}
           >
             {/* Left side */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-              <div style={{
-                width: '4px',
-                height: '32px',
-                borderRadius: '4px',
-                background: 'linear-gradient(180deg, #6366F1, #8B5CF6)',
-              }} />
-              <div>
-                <h1 style={{
-                  fontFamily: 'Playfair Display, serif',
-                  fontSize: '26px',
-                  fontWeight: 900,
-                  color: '#1A1510',
-                  letterSpacing: '-0.03em',
-                  margin: 0,
-                  lineHeight: 1.2,
-                }}>
-                  Social Feed
-                </h1>
-                <p style={{
-                  fontFamily: 'JetBrains Mono, monospace',
-                  fontSize: '10px',
-                  color: 'rgba(26,21,16,0.35)',
-                  margin: '2px 0 0',
-                  letterSpacing: '0.3px',
-                }}>
-                  {posts.length > 0 ? `${posts.length} posts` : 'Your timeline'}
-                </p>
-              </div>
-            </div>
+         <div style={{
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  padding: '20px 0',
+  borderBottom: '1px solid rgba(26,21,16,0.06)',
+  marginBottom: '8px',
+}}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+    {/* Premium Icon Container */}
+    <div style={{
+      width: '44px',
+      height: '44px',
+      borderRadius: '14px',
+      background: 'linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      boxShadow: '0 4px 12px rgba(99,102,241,0.12), inset 0 1px 0 rgba(255,255,255,0.8)',
+      border: '1px solid rgba(99,102,241,0.1)',
+    }}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366F1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    </div>
+
+    {/* Text Content */}
+    <div>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+        <h1 style={{
+          fontFamily: 'Playfair Display, serif',
+          fontSize: '28px',
+          fontWeight: 900,
+          color: '#1A1510',
+          letterSpacing: '-0.04em',
+          margin: 0,
+          lineHeight: 1.1,
+          position: 'relative',
+        }}>
+          Social Feed
+        </h1>
+    
+      </div>
+      <p style={{
+        fontFamily: 'Inter, -apple-system, sans-serif',
+        fontSize: '11px',
+        fontWeight: 500,
+        color: 'rgba(26,21,16,0.4)',
+        margin: '4px 0 0',
+        letterSpacing: '0.2px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '4px',
+      }}>
+        {posts.length > 0 ? (
+          <>
+            <span style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '3px',
+              background: 'rgba(16,185,129,0.1)',
+              padding: '2px 8px',
+              borderRadius: '20px',
+              fontSize: '10px',
+              fontWeight: 600,
+              color: '#059669',
+            }}>
+              <span style={{ fontSize: '11px' }}>✦</span>
+              {posts.length} {posts.length === 1 ? 'post' : 'posts'}
+            </span>
+          </>
+        ) : (
+          <span style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '3px',
+            background: 'rgba(99,102,241,0.06)',
+            padding: '2px 8px',
+            borderRadius: '20px',
+            fontSize: '10px',
+            fontWeight: 600,
+            color: '#6366F1',
+          }}>
+            Your timeline
+          </span>
+        )}
+      </p>
+    </div>
+  </div>
+
+  {/* Optional: Premium Action Button */}
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  }}>
+  
+  </div>
+</div>
+
+{/* Add this CSS animation in your stylesheet or style tag */}
+<style>{`
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.3); }
+  }
+`}</style>
 
             {/* Right side - Actions */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

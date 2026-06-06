@@ -219,12 +219,13 @@ export default function Navbar() {
               }}>
                 <Sparkles size={15} color="#fff" />
               </div>
-              <span className="hidden sm:inline" style={{
+              <span style={{
                 fontFamily: 'Plus Jakarta Sans, sans-serif',
                 fontWeight: 800,
-                fontSize: '20px',
+                fontSize: 'clamp(16px, 4vw, 20px)',
                 color: colors.text,
                 letterSpacing: '-0.5px',
+                whiteSpace: 'nowrap',
               }}>
                 Social<span style={{
                   background: 'linear-gradient(135deg, #6366F1, #8B5CF6)',
@@ -594,6 +595,45 @@ export default function Navbar() {
             >
               <div style={{ padding: '8px 20px 12px', display: 'flex', flexDirection: 'column', gap: '1px' }}>
 
+                {displayLinks.map((link) => (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    onClick={() => setMobileOpen(false)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      padding: '10px 12px',
+                      borderRadius: '8px',
+                      fontSize: '14px',
+                      fontWeight: isActive(link) ? 700 : 600,
+                      color: isActive(link) ? colors.activeText : colors.text,
+                      background: isActive(link) ? colors.activeBg : 'transparent',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    {React.createElement(link.icon, {
+                      size: 16,
+                      strokeWidth: isActive(link) ? 2.4 : 1.9,
+                    })}
+                    {link.label}
+                    {link.badge && (
+                      <span style={{
+                        marginLeft: 'auto',
+                        fontSize: '10px',
+                        fontWeight: 700,
+                        padding: '2px 6px',
+                        borderRadius: '999px',
+                        background: 'linear-gradient(135deg, #6366F1, #8B5CF6)',
+                        color: '#fff',
+                        fontFamily: 'JetBrains Mono, monospace',
+                      }}>
+                        {link.badge}
+                      </span>
+                    )}
+                  </Link>
+                ))}
 
                 <div style={{ height: '1px', background: isDark ? 'rgba(51,65,85,0.3)' : 'rgba(226,232,240,0.5)', margin: '4px 0' }} />
 

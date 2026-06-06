@@ -59,14 +59,10 @@ export const endApiRequest = () => {
 
   if (state.activeRequests === 0) {
     clearNoticeTimer();
-    state = {
-      ...state,
-      showNotice: false,
-      message: '',
-    };
   }
 
   emit();
+  return state.activeRequests;
 };
 
 export const showApiNotice = (message) => {
@@ -80,6 +76,7 @@ export const showApiNotice = (message) => {
 };
 
 export const hideApiNotice = () => {
+  clearNoticeTimer();
   state = {
     ...state,
     showNotice: false,

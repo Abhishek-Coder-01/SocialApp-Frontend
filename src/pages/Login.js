@@ -145,9 +145,14 @@ export default function Login() {
         }
         
         @media (max-width: 640px) {
-          .form-container { padding: 24px 20px !important; max-width: 100% !important; }
+          .right-panel { padding: 28px 16px !important; }
+          .form-container { padding: 22px 18px !important; max-width: 100% !important; }
           .social-buttons { grid-template-columns: 1fr !important; }
-          .heading { font-size: 1.8rem !important; }
+          .back-link { top: 16px !important; left: 16px !important; padding: 8px 14px !important; font-size: 12px !important; }
+          .mobile-logo { margin-bottom: 24px !important; }
+          .mobile-logo span { font-size: 16px !important; }
+          .heading { font-size: 1.55rem !important; line-height: 1.12 !important; }
+          .login-subtitle { font-size: 14px !important; }
         }
       `}</style>
 
@@ -162,6 +167,7 @@ export default function Login() {
           left: '24px',
           zIndex: 50,
         }}
+        className="back-link"
       >
         <Link
           to="/"
@@ -299,7 +305,7 @@ export default function Login() {
           style={{ width: '100%', maxWidth: 400, position: 'relative', zIndex: 1 }}
         >
           {/* Mobile logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 36 }} className="lg:hidden">
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 36 }} className="lg:hidden mobile-logo">
             <div style={{ width: 34, height: 34, borderRadius: 11, background: 'linear-gradient(135deg,#6366F1,#8B5CF6)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 14px rgba(99,102,241,0.3)' }}>
               <Sparkles size={15} color="#fff" />
             </div>
@@ -316,7 +322,7 @@ export default function Login() {
             <h1 className="heading" style={{ fontFamily: 'Playfair Display', fontSize: '2.2rem', fontWeight: 900, color: '#1A1510', letterSpacing: '-0.025em', lineHeight: 1.1, marginBottom: 10 }}>
               Welcome back
             </h1>
-            <p style={{ fontFamily: 'Plus Jakarta Sans', fontSize: 15, color: '#8B8070', fontWeight: 400 }}>
+            <p className="login-subtitle" style={{ fontFamily: 'Plus Jakarta Sans', fontSize: 15, color: '#8B8070', fontWeight: 400 }}>
               Sign in to continue your journey
             </p>
           </div>

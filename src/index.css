@@ -197,6 +197,26 @@
   .Toastify__toast {
     @apply rounded-xl font-sans text-sm font-medium !important;
   }
+
+  @media (max-width: 640px) {
+    .Toastify__toast-container {
+      left: 0.75rem !important;
+      right: 0.75rem !important;
+      width: auto !important;
+      padding: 0 !important;
+    }
+
+    .Toastify__toast-container--top-right,
+    .Toastify__toast-container--top-center {
+      top: 0.75rem !important;
+      transform: none !important;
+    }
+
+    .Toastify__toast {
+      width: 100% !important;
+      margin-bottom: 0.5rem !important;
+    }
+  }
 }
 
 /* ─── Utility Overrides ────────────────────────────────────────────────────── */
